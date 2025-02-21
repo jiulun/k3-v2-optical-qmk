@@ -22,7 +22,7 @@ jobs:
       - name: Compile firmware
         run: cd qmk_firmware && make keychron/k3/rgb/optical_iso:ansi_homeend
       - name: Upload compiled firmware (build artifact)
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: Keychron K3 QMK Firmware
           path: qmk_firmware/keychron_k3_rgb_optical_iso_ansi_homeend.bin
