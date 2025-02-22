@@ -8,7 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Clone SonixQMK
-        run: git clone https://github.com/SonixQMK/qmk_firmware.git
+        run: git clone https://github.com/SonixQMK/qmk_firmware.git && cd qmk_firmware && git checkout 96d0671
       - name: Install qmk deps
         run: cd qmk_firmware && ./util/qmk_install.sh && python3 -m pip install qmk
       - name: fix gcc
@@ -20,15 +20,15 @@ jobs:
       - name: Copy custom config
         run: cp -rp keyboards/keychron/k3/rgb/config.h qmk_firmware/keyboards/keychron/k3/rgb/config.h
       - name: Compile firmware
-        run: cd qmk_firmware && make keychron/k3/rgb/optical_iso:ansi_homeend
+        run: cd qmk_firmware && make keychron/k3/rgb/optical_ansi:ansi_homeend
       - name: Upload compiled firmware (build artifact)
         uses: actions/upload-artifact@v4
         with:
           name: Keychron K3 QMK Firmware
-          path: qmk_firmware/keychron_k3_rgb_optical_iso_ansi_homeend.bin
+          path: qmk_firmware/keychron_k3_rgb_optical_ansi_ansi_homeend.bin
       - name: Upload compiled firmware (tagged release)
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
           files: |
-            qmk_firmware/keychron_k3_rgb_optical_iso_ansi_homeend.bin
+            qmk_firmware/keychron_k3_rgb_optical_ansi_ansi_homeend.bin
