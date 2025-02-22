@@ -15,6 +15,14 @@ I did this for two reasons:
    way I can tag a working version on GitHub and always have a copy in case
    I break something.
 
+## How to flash
+1. Open the Snix Keylobard Flasher. Choose SN32F24x under Device section.
+2. On the right Stock area, click Reboot to Bootlaoder [HFD]
+3. On the left QMK area, choose qmk offset 0x00 as jumploader is not installed.
+4. Click Flash QMK button and select the compiled firmware bin file.
+
+![image](https://github.com/user-attachments/assets/cad6b98d-cfa3-46b1-9451-0e7db3466834)
+
 ## K3v2 Keymap
 
 My K3v2 keymap is at
