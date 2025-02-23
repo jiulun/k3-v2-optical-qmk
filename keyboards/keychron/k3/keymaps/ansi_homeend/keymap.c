@@ -162,6 +162,18 @@ bool dip_switch_update_user(uint8_t index, bool active) {
   return true;
 }
 
+// Capslock indicator on the side lights.
+void rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
+  if (IS_HOST_LED_ON(USB_LED_CAPS_LOCK)) {
+      for (uint8_t i = led_min; i <= led_max; i++) {
+          if (g_led_config.flags[i] & LED_FLAG_UNDERGLOW) {
+              // led 82 to 97
+              rgb_matrix_set_color(i, RGB_RED);
+          }
+      }
+  }
+}
+
 void keyboard_post_init_user(void) {
   // Customise these values to desired behaviour
   // debug_enable = true;
